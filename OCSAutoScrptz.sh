@@ -129,6 +129,8 @@ chmod -R g+rw /home/vps/public_html service php5.6-fpm restart
 service php5.6-fpm restart
 service nginx restart
 
+apt-get update && apt-get upgrade
+
 apt-get -y install zip unzip
 cd /home/vps/public_html
 wget $source/OCS.zip
