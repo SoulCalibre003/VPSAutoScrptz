@@ -31,7 +31,7 @@ cd
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 : '
 # check registered ip
-wget -q -O daftarip http://34.66.206.209:85/ocs/ip.txt
+wget -q -O daftarip http://0.0.0.0:85/ocs/ip.txt
 if ! grep -w -q $MYIP daftarip; then
 	echo "Sorry, only registered IPs can use this script!"
 	if [[ $vps = "vps" ]]; then
@@ -108,25 +108,25 @@ sudo apt install ca-certificates apt-transport-https
 wget -q https://packages.sury.org/php/apt.gpg -O- | sudo apt-key add -
 echo "deb https://packages.sury.org/php/ stretch main" | sudo tee /etc/apt/sources.list.d/php.list
 sudo apt update
-sudo apt install php7.3
+sudo apt install php5.6
 
-apt-get -y install nginx php7.3-cli php7.3-common php7.3-curl php7.3-mbstring php7.3-mysql php7.3-xml php7.3-fpm php7.3-mcrypt
+apt-get -y install nginx php5.6-cli php5.6-common php5.6-curl php5.6-mbstring php5.6-mysql php5.6-xml php5.6-fpm php5.6-mcrypt
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup 
 mv /etc/nginx/conf.d/vps.conf /etc/nginx/conf.d/vps.conf.backup 
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/SoulCalibre003/OCS/master/nginx.conf" 
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/SoulCalibre003/OCS/master/vps.conf" 
-sed -i 's/cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php7.3/fpm/php.ini 
-sed -i 's/listen = \/var\/run\/php7.3-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php7.3/fpm/pool.d/www.conf
+sed -i 's/cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php5.6/fpm/php.ini 
+sed -i 's/listen = \/var\/run\/php5.6-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5.6/fpm/pool.d/www.conf
 
 useradd -m vps
 mkdir -p /home/vps/public_html
 rm /home/vps/public_html/index.html
 echo "<?php phpinfo() ?>" > /home/vps/public_html/info.php
 chown -R www-data:www-data /home/vps/public_html
-chmod -R g+rw /home/vps/public_html service php7.3-fpm restart
-service php7.3-fpm restart
+chmod -R g+rw /home/vps/public_html service php5.6-fpm restart
+service php5.6-fpm restart
 service nginx restart
 
 apt-get -y install zip unzip
