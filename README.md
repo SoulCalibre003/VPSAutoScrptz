@@ -20,10 +20,10 @@ Disable Change Password in Panel: wget https://raw.githubusercontent.com/SoulCal
 
 Updates:
 Kill Multilogin, Delete All Expired Users
-cd && wget -O SoulCalibreOCSUpdate "https://github.com/SoulCalibre003/VPSAutoScrptz/raw/master/update-ocs.sh" && chmod +x ClrkzOCSUpdate && sed -i -e 's/\r$//' ClrkzOCSUpdate && ./ClrkzOCSUpdate && rm SoulCalibreOCSUpdate
+cd && wget -O SoulCalibreOCSUpdate "https://github.com/SoulCalibre003/VPSAutoScrptz/raw/master/update-ocs.sh" && chmod +x SoulCalibreOCSUpdate && sed -i -e 's/\r$//' SoulCalibreOCSUpdate && ./SoulCalibreOCSUpdate && rm SoulCalibreOCSUpdate
 
 # Credits
-Modder: SoulCalibre
+Modified by: SoulCalibre
 
 Original script by :
 * Fornesia
