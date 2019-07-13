@@ -69,16 +69,15 @@ apt-get -y install nginx
 apt-get -y install nano iptables dnsutils openvpn screen whois ngrep unzip unrar
 
 echo "clear" >> .bashrc
-echo 'echo -e " ######    #####   ##     ##  ##       "' >> .bashrc
-echo 'echo -e "##      ## ##     ##  ##     ##  ##       "' >> .bashrc
-echo 'echo -e "##           ##     ##  ##     ##  ##       "' >> .bashrc
-echo 'echo -e "  ######  ##     ##  ##     ##  ##       "' >> .bashrc
-echo 'echo -e "          ## ##     ##  ##     ##  ##       "' >> .bashrc
-echo 'echo -e "##      ##  ##     ##  ##     ##  ##       "' >> .bashrc
-echo 'echo -e " ######     #####     #####    ###### "' >> .bashrc
-echo 'echo -e "welcome to the server $HOSTNAME" | lolcat' >> .bashrc
-echo 'echo -e "Script mod by SoulCalibre"' >> .bashrc
-echo 'echo -e "Type menu to display a list of commands"' >> .bashrc
+echo 'echo -e " ######     #####    ##     ##  ##       "' >> .bashrc
+echo 'echo -e "##    ##  ##     ##  ##     ##  ##       "' >> .bashrc
+echo 'echo -e "##        ##     ##  ##     ##  ##       "' >> .bashrc
+echo 'echo -e " ######   ##     ##  ##     ##  ##       "' >> .bashrc
+echo 'echo -e "      ##  ##     ##  ##     ##  ##       "' >> .bashrc
+echo 'echo -e "##    ##  ##     ##  ##     ##  ##       "' >> .bashrc
+echo 'echo -e " ######     #####      #####    ######   "' >> .bashrc
+echo 'echo -e "Modified by SoulCalibre                  "' >> .bashrc
+echo 'echo -e "Type menu to see the list of commands.   "' >> .bashrc
 echo 'echo -e ""' >> .bashrc
 
 # install webserver
@@ -137,12 +136,19 @@ echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
 service dropbear restart
 
+sudo apt install php5.6
+apt-get -y install nginx php5.6-cli php5.6-common php5.6-curl php5.6-mbstring php5.6-mysql php5.6-xml php5.6-fpm php5.6-mcrypt
+service php5.6 restart
+service nginx restart
+systemctl enable php5.6 && systemctl enable nginx
+
 # install squid
 cd
 apt-get -y install squid
 wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/SoulCalibre003/VPSAutoScrptz/master/squid.conf"
 sed -i $MYIP2 /etc/squid/squid.conf;
 service squid restart
+systemctl enable squid
 
 # install webmin
 cd
